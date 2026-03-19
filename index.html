@@ -53,11 +53,21 @@
     background: var(--white);
     border-right: 1px solid var(--border);
     z-index: 1000;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     box-shadow: 2px 0 10px rgba(0,0,0,0.03);
+    -webkit-overflow-scrolling: touch;
   }
+  .sidebar-overlay {
+    position: fixed; inset: 0;
+    background: rgba(12, 18, 34, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0; visibility: hidden;
+    transition: all 0.3s;
+  }
+  .sidebar-overlay.active { opacity: 1; visibility: visible; }
 
   .sidebar-header {
     padding: 32px 24px;
@@ -80,7 +90,7 @@
   }
 
   .nav-tab {
-    padding: 14px 18px;
+    padding: 16px 20px;
     margin-bottom: 8px;
     border-radius: var(--radius-sm);
     font-size: 14px;
@@ -92,6 +102,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .nav-tab:hover {
@@ -580,9 +591,14 @@
   }
   .embed-frame {
     width: 100%; aspect-ratio: 16/9;
+    position: relative;
     border-radius: 10px; overflow: hidden;
     border: 1px solid var(--border);
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  @supports not (aspect-ratio: 16/9) {
+    .embed-frame { padding-top: 56.25%; height: 0; }
+    .embed-frame iframe { position: absolute; top: 0; left: 0; }
   }
   .embed-frame iframe {
     width: 100% !important; height: 100% !important; display: block; border: none;
@@ -617,6 +633,7 @@
 <body>
 
 <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
 
 <div class="sidebar" id="sidebar">
   <div class="sidebar-header">
@@ -1697,26 +1714,40 @@
 
 <script>
   function show(idx) {
-    document.querySelectorAll('.session-block').forEach((b,i) => b.classList.toggle('active', i===idx));
-    document.querySelectorAll('.nav-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
-    const mainPos = document.querySelector('.main').offsetTop;
-    window.scrollTo({ top: mainPos - 20, behavior: 'smooth' });
+    const blocks = document.querySelectorAll('.session-block');
+    const tabs = document.querySelectorAll('.nav-tab');
+    blocks.forEach((b,i) => b.classList.toggle('active', i===idx));
+    tabs.forEach((t,i) => t.classList.toggle('active', i===idx));
+    
+    const activeBlock = blocks[idx];
+    if (activeBlock) {
+      activeBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
   function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
+    const sb = document.getElementById('sidebar');
+    const ov = document.getElementById('overlay');
+    sb.classList.toggle('open');
+    ov.classList.toggle('active');
   }
   function closeSidebarMobile() {
     if (window.innerWidth <= 1024) {
-      document.getElementById('sidebar').classList.remove('open');
+      toggleSidebar();
     }
   }
   function toggle(card) {
     if (!card.classList.contains('topic-card')) return;
     const wasOpen = card.classList.contains('open');
-    card.closest('.topics-stack')?.querySelectorAll('.topic-card.open').forEach(c => { if(c!==card) c.classList.remove('open'); });
+    const stack = card.closest('.topics-stack');
+    if (stack) {
+      stack.querySelectorAll('.topic-card.open').forEach(c => { if(c!==card) c.classList.remove('open'); });
+    }
     card.classList.toggle('open', !wasOpen);
   }
-  document.querySelector('.session-block.active .topic-card')?.classList.add('open');
+  const initialCard = document.querySelector('.session-block.active .topic-card');
+  if (initialCard) {
+    initialCard.classList.add('open');
+  }
 </script>
 </body>
 </html>
