@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kế Hoạch Hướng Dẫn – BAZIS & Woodsoft Nesting</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4f0;
+    --white: #ffffff;
+    --ink: #1a1a2e;
+    --ink2: #2d3561;
+    --muted: #7a7f9a;
+    --light: #ecedf5;
+    --accent: #2347c5;
+    --accent2: #4f6ef7;
+    --accent-light: #eef1fd;
+    --gold: #d4920a;
+    --gold-light: #fdf4e0;
+    --green: #0e8a5a;
+    --green-light: #e6f7f1;
+    --red: #d03f2f;
+    --red-light: #fdf0ee;
+    --purple: #6b44d6;
+    --purple-light: #f0ecfd;
+    --border: #e4e5f0;
+    --shadow-sm: 0 1px 4px rgba(35,71,197,0.07);
+    --shadow: 0 4px 20px rgba(35,71,197,0.10);
+    --shadow-lg: 0 12px 40px rgba(35,71,197,0.13);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 40px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 80%, rgba(79,110,247,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 85% 20%, rgba(35,71,197,0.05) 0%, transparent 70%);
+  }
+
+  /* Decorative dots */
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+    background-image: radial-gradient(circle, rgba(35,71,197,0.08) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, black 30%, transparent 80%);
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-light);
+    border: 1px solid rgba(35,71,197,0.15);
+    border-radius: 100px;
+    padding: 6px 18px;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.7); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5.5vw, 58px);
+    font-weight: 800; line-height: 1.12;
+    color: var(--ink);
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .hero-title span {
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 18px; color: var(--muted);
+    font-weight: 400; margin-bottom: 40px;
+    position: relative;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex; justify-content: center; gap: 12px;
+    flex-wrap: wrap; position: relative;
+  }
+
+  .stat-pill {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 10px 20px;
+    box-shadow: var(--shadow-sm);
+    font-size: 13px; font-weight: 600; color: var(--ink2);
+  }
+
+  .stat-pill .val {
+    font-size: 17px; font-weight: 800; color: var(--accent);
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ── NAVIGATION ──────────────────────────── */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 200;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 16px rgba(35,71,197,0.06);
+  }
+
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 0;
+    padding: 0 20px;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    padding: 16px 22px;
+    font-size: 13px; font-weight: 700;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.22s;
+    letter-spacing: 0.2px;
+  }
+  .nav-tab:hover { color: var(--accent); }
+  .nav-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── MAIN ────────────────────────────────── */
+  .main {
+    max-width: 1100px; margin: 0 auto;
+    padding: 40px 20px 100px;
+  }
+
+  .session-block { display: none; }
+  .session-block.active {
+    display: block;
+    animation: slideUp 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Session header */
+  .session-header {
+    display: flex; align-items: center; gap: 20px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+    position: relative; overflow: hidden;
+  }
+
+  .session-header::after {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 5px;
+    background: linear-gradient(to bottom, var(--accent), var(--accent2));
+    border-radius: 20px 0 0 20px;
+  }
+
+  .session-badge {
+    width: 64px; height: 64px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 800; color: white;
+    box-shadow: 0 6px 20px rgba(35,71,197,0.3);
+  }
+
+  .session-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--ink); margin-bottom: 5px;
+  }
+
+  .session-info p { color: var(--muted); font-size: 14px; font-weight: 500; }
+
+  .session-time {
+    margin-left: auto; flex-shrink: 0; text-align: right;
+  }
+  .session-time .mins {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; font-weight: 800;
+    color: var(--gold); line-height: 1;
+  }
+  .session-time .mins small { font-size: 15px; }
+  .session-time .label {
+    font-size: 11px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 1.2px;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex; align-items: center; gap: 14px;
+    flex-wrap: wrap;
+    background: var(--accent-light);
+    border: 1px solid rgba(35,71,197,0.12);
+    border-radius: 12px;
+    padding: 12px 18px;
+    margin-bottom: 20px;
+    font-size: 12px; color: var(--ink2);
+  }
+  .legend strong { color: var(--accent); }
+  .legend-sep { color: var(--border); }
+
+  /* Topic cards */
+  .topics-stack { display: flex; flex-direction: column; gap: 12px; }
+
+  .topic-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.22s, border-color 0.22s, transform 0.18s;
+  }
+  .topic-card:hover {
+    box-shadow: var(--shadow);
+    border-color: rgba(35,71,197,0.2);
+    transform: translateY(-2px);
+  }
+  .topic-card.open {
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(35,71,197,0.25);
+  }
+
+  .topic-header {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 22px;
+    cursor: pointer; user-select: none;
+  }
+
+  .topic-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 800;
+    font-family: 'Playfair Display', serif;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid rgba(35,71,197,0.12);
+  }
+
+  .topic-title { font-size: 14px; font-weight: 700; color: var(--ink); flex: 1; line-height: 1.4; }
+
+  .topic-dur {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 12px; font-weight: 700; color: var(--gold);
+    background: var(--gold-light);
+    border: 1px solid rgba(212,146,10,0.18);
+    border-radius: 8px; padding: 4px 11px; flex-shrink: 0;
+  }
+
+  .chevron {
+    color: var(--muted); transition: transform 0.25s;
+    flex-shrink: 0; font-size: 16px; line-height: 1;
+  }
+  .topic-card.open .chevron { transform: rotate(180deg); color: var(--accent); }
+
+  /* Body */
+  .topic-body { display: none; border-top: 1px solid var(--border); }
+  .topic-card.open .topic-body { display: block; }
+
+  .body-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .body-col { padding: 20px 24px; }
+  .body-col + .body-col { border-left: 1px solid var(--border); }
+
+  .col-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent2);
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .col-label::before {
+    content: ''; display: inline-block; width: 14px; height: 2px;
+    background: var(--accent2); border-radius: 2px;
+  }
+
+  .items { list-style: none; }
+  .items li {
+    font-size: 13px; color: #3d4466;
+    line-height: 1.65; padding: 3px 0 3px 16px;
+    position: relative; font-weight: 500;
+  }
+  .items li::before {
+    content: '›'; position: absolute; left: 2px;
+    color: var(--accent2); font-weight: 700; font-size: 14px; top: 2px;
+  }
+  .sub-items { padding-left: 14px; list-style: none; margin-top: 3px; }
+  .sub-items li { font-size: 12px; color: var(--muted); padding: 2px 0 2px 13px; }
+  .sub-items li::before { content: '·'; color: var(--muted); font-size: 16px; top: 0px; }
+
+  /* Resources */
+  .resources {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    padding: 14px 22px;
+    background: #fafbff;
+    border-top: 1px solid var(--border);
+  }
+
+  .chip-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 700;
+    padding: 6px 14px; border-radius: 8px;
+    text-decoration: none; transition: all 0.16s; cursor: pointer;
+  }
+  .chip-link.drive {
+    background: var(--green-light); border: 1px solid rgba(14,138,90,0.2); color: var(--green);
+  }
+  .chip-link.drive:hover { background: #c9f0e3; border-color: var(--green); box-shadow: 0 2px 8px rgba(14,138,90,0.15); }
+  .chip-link.youtube {
+    background: var(--red-light); border: 1px solid rgba(208,63,47,0.2); color: var(--red);
+  }
+  .chip-link.youtube:hover { background: #f9d9d5; border-color: var(--red); box-shadow: 0 2px 8px rgba(208,63,47,0.15); }
+
+  .chip-label {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600;
+    padding: 5px 12px; border-radius: 8px;
+    font-family: 'Nunito', monospace; letter-spacing: 0.2px;
+  }
+  .chip-label.drive { background: #f0faf6; border: 1px dashed rgba(14,138,90,0.25); color: #2a9d6e; }
+  .chip-label.youtube { background: #fdf4f3; border: 1px dashed rgba(208,63,47,0.25); color: #c05040; }
+
+  /* Practice cards */
+  .topic-card.practice .topic-icon {
+    background: var(--purple-light);
+    color: var(--purple);
+    border-color: rgba(107,68,214,0.15);
+  }
+  .topic-card.practice .topic-title { color: var(--purple); }
+  .topic-card.practice .topic-header { background: #fefeff; }
+  .topic-card.practice { border-color: rgba(107,68,214,0.15); }
+  .topic-card.practice:hover { border-color: rgba(107,68,214,0.3); }
+
+  /* Break */
+  .break-row {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 22px;
+    background: var(--gold-light);
+    border: 1px dashed rgba(212,146,10,0.28);
+    border-radius: 12px;
+    color: var(--gold); font-size: 13px; font-weight: 700;
+    margin: 4px 0;
+  }
+  .break-row .dur { margin-left: auto; font-size: 12px; opacity: 0.8; }
+
+  /* Summary card */
+  .summary-card {
+    background: linear-gradient(135deg, #eef1fd 0%, #f5f4f0 100%);
+    border: 1.5px solid rgba(35,71,197,0.15);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    box-shadow: var(--shadow);
+  }
+  .summary-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .summary-card p { color: var(--ink2); font-size: 14px; line-height: 1.7; font-weight: 500; }
+
+  /* YouTube embed */
+  .yt-embed-row {
+    display: flex; gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .yt-embed-row .body-grid {
+    flex: 1;
+  }
+  .yt-embed-panel {
+    width: 340px; flex-shrink: 0;
+    border-left: 1px solid var(--border);
+    background: #fafbff;
+    display: flex; flex-direction: column;
+    align-items: stretch; justify-content: flex-start;
+    padding: 16px;
+    gap: 10px;
+  }
+  .yt-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--red);
+    display: flex; align-items: center; gap: 7px;
+  }
+  .yt-label::before {
+    content: ''; display: inline-block; width: 14px; height: 2px;
+    background: var(--red); border-radius: 2px;
+  }
+  .yt-frame {
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: 10px; overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+  }
+  .yt-frame iframe {
+    width: 100%; height: 100%; display: block; border: none;
+  }
+  .yt-open-btn {
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+    font-size: 12px; font-weight: 700; color: var(--red);
+    background: var(--red-light); border: 1px solid rgba(208,63,47,0.2);
+    border-radius: 8px; padding: 7px 14px;
+    text-decoration: none; transition: all 0.16s;
+  }
+  .yt-open-btn:hover { background: #f9d9d5; border-color: var(--red); }
+
+  @media (max-width: 860px) {
+    .yt-embed-row { flex-direction: column; }
+    .yt-embed-panel { width: 100%; border-left: none; border-top: 1px solid var(--border); }
+  }
+
+  /* Footer */
+  footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  footer strong { color: var(--ink2); }
+
+  @media (max-width: 680px) {
+    .hero { padding: 44px 20px 36px; }
+    .body-grid { grid-template-columns: 1fr; }
+    .body-col + .body-col { border-left: none; border-top: 1px solid var(--border); }
+    .session-time { display: none; }
+    .session-header { gap: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-eyebrow"><span class="dot"></span> Kế Hoạch Hướng Dẫn · 2024</div>
+  <h1 class="hero-title">BAZIS – <span>Woodsoft Nesting</span><br>Chương Trình Đào Tạo</h1>
+  <p class="hero-subtitle">Hướng dẫn toàn diện từ cơ bản đến nâng cao · Biên soạn bởi <strong>Lương Văn Sao</strong></p>
+  <div class="stats-row">
+    <div class="stat-pill"><span class="val">5</span> Buổi học</div>
+    <div class="stat-pill"><span class="val">20+</span> Chủ đề</div>
+    <div class="stat-pill"><span class="val">870</span> Phút đào tạo</div>
+    <div class="stat-pill"><span class="val">BAZIS</span> + Woodsoft Nesting</div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="show(0)">📘 Buổi 1 · Tổng quan & Cơ bản</div>
+    <div class="nav-tab" onclick="show(1)">✏️ Buổi 2 · Bản vẽ & Phụ kiện</div>
+    <div class="nav-tab" onclick="show(2)">🎨 Buổi 3 · Nâng cao & Fragment</div>
+    <div class="nav-tab" onclick="show(3)">⚙️ Buổi 4 · CNC & Nesting</div>
+    <div class="nav-tab" onclick="show(4)">🎓 Buổi 5 · Tốt nghiệp</div>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- LEGEND -->
+<div class="legend">
+  <strong>Chú thích tài liệu:</strong>
+  <span><span class="chip-link drive" style="pointer-events:none;cursor:default">📁 Link</span> = click mở Google Drive</span>
+  <span class="legend-sep">|</span>
+  <span><span class="chip-link youtube" style="pointer-events:none;cursor:default">▶ Link</span> = click mở YouTube</span>
+  <span class="legend-sep">|</span>
+  <span><span class="chip-label drive">📄 TÊN FILE</span> = tên tài liệu (chưa có URL)</span>
+  <span class="legend-sep">|</span>
+  <span><span class="chip-label youtube">🎬 TÊN VIDEO</span> = tên video (chưa có URL)</span>
+</div>
+
+<!-- ===== BUỔI 1 ===== -->
+<div class="session-block active" id="s0">
+  <div class="session-header">
+    <div class="session-badge">01</div>
+    <div class="session-info">
+      <h2>Tổng quan hệ thống & Cài đặt cơ bản</h2>
+      <p>Giới thiệu BAZIS – Woodsoft · Công cụ · CSDL vật tư · Dựng hình · Scripts</p>
+    </div>
+    <div class="session-time">
+      <div class="mins">330<small>ph</small></div>
+      <div class="label">Tổng thời gian</div>
+    </div>
+  </div>
+
+  <div class="topics-stack">
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">01</div>
+        <div class="topic-title">Tổng thể hệ thống phần mềm BAZIS – WOODSOFT</div>
+        <div class="topic-dur">⏱ 30 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung chính</div>
+            <ul class="items">
+              <li>Công dụng các module cơ bản: Dựng hình, Cắt ván, CNC, Nesting, CNC Panelsaw, Dự toán, Bazis kho, Bazis nội thất, Bazis bao gói</li>
+              <li>Sự kết nối giữa các module chính áp dụng cho mô hình khách hàng</li>
+              <li>Giới thiệu chung về Woodsoft OPTIMIZER</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Hướng dẫn thực hiện</div>
+            <ul class="items">
+              <li>Giới thiệu các shortcut tương ứng với từng module</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 GIỚI THIỆU TỔNG THỂ</span>
+          <span class="chip-label drive">📄 WEB WOODSOFT OPTIMIZER</span>
+          <span class="chip-label youtube">🎬 VD GT TONG THE WS OPTIMIZERS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">02</div>
+        <div class="topic-title">Cài đặt cơ bản</div>
+        <div class="topic-dur">⏱ 60 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Thiết lập giao diện: Tùy chỉnh giao diện làm việc</li>
+              <li>Ý nghĩa và thao tác với các công cụ trên thanh công cụ</li>
+              <li>Thiết lập đường dẫn CSDL</li>
+              <li>Lưu cài đặt, khôi phục cài đặt</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Chi tiết thực hiện</div>
+            <ul class="items">
+              <li>Giới thiệu giao diện khi mở phần mềm</li>
+              <li>Giới thiệu các công cụ trên thanh (phím tắt) và sắp xếp vị trí phù hợp</li>
+              <li>Cài đặt: Thanh công cụ, kiểu giao diện, Thông số, CSDL vật tư</li>
+              <li>Thiết lập Vray · Thiết lập lưu và khôi phục cài đặt</li>
+              <li>Chỉ vị trí trong tài liệu và link video youtube</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 THIẾT LẬP GIAO DIỆN</span>
+          <span class="chip-label drive">📄 THIẾT LẬP ĐƯỜNG DẪN CSDL</span>
+          <span class="chip-label drive">📄 VI TRI FILE AUTOSAVE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">03</div>
+        <div class="topic-title">Công cụ</div>
+        <div class="topic-dur">⏱ 60 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Các công cụ chính</div>
+            <ul class="items">
+              <li>Cấu trúc đối tượng 3D</li>
+              <li>Thuộc tính chi tiết</li>
+              <li>File browser</li>
+              <li>Lịch sử dựng hình sản phẩm</li>
+              <li>Phân tích đối tượng 3D</li>
+              <li>Chỉnh sửa hiển thị vật liệu</li>
+              <li>Thư viện</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Phương pháp hướng dẫn</div>
+            <ul class="items">
+              <li>Nêu lên công dụng của các công cụ</li>
+              <li>Giới thiệu chi tiết từng công cụ</li>
+              <li>Chỉ vị trí trong file tài liệu để học viên xem lại</li>
+              <li>Các thao tác cần lưu ý với từng công cụ</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 CAU TRUC DT 3D</span>
+          <span class="chip-label drive">📄 THUỘC TÍNH CT</span>
+          <span class="chip-label drive">📄 FILE BROWSER</span>
+          <span class="chip-label drive">📄 LỊCH SỬ DỰNG</span>
+          <span class="chip-label drive">📄 PHAN TICH 3D</span>
+          <span class="chip-label drive">📄 CS HIỂN THỊ VLIEU</span>
+          <span class="chip-label drive">📄 THU VIỆN</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">04</div>
+        <div class="topic-title">Cơ sở dữ liệu vật tư</div>
+        <div class="topic-dur">⏱ 30 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Sơ bộ về CSDL vật tư</li>
+              <li>Tạo thêm vật tư mới không có sẵn trong CSDL:
+                <ul class="sub-items">
+                  <li>Tạo vật tư tấm mới</li>
+                  <li>Tạo vật tư nẹp mới</li>
+                  <li>Tạo vật tư phụ kiện mới bằng nhập tương tự</li>
+                  <li>Tạo vật tư dạng thanh</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 SƠ BỘ VỀ CSDL</span>
+          <span class="chip-label drive">📄 TAO VAT TU DANG TAM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="break-row">☕ <span>Nghỉ hết buổi 1 · Buổi sáng</span><span class="dur">180 phút nghỉ</span></div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">05</div>
+        <div class="topic-title">Dựng hình</div>
+        <div class="topic-dur">⏱ 50 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Các kỹ năng dựng hình</div>
+            <ul class="items">
+              <li>Vật liệu đang sử dụng: Tạo list vật tư dạng tấm, dạng thanh · Lưu và khôi phục list vật tư</li>
+              <li>Dựng hình tấm: tấm đứng, tấm ngang, tấm mặt · Giới hạn trên/dưới/trái/phải (lệnh ~) · Độ lùi/nhô</li>
+              <li>Công cụ vẽ profile: mặt cắt theo đường thẳng, đường dẫn, xoay trục · Bù trừ đối tượng · Hình cầu, hình chóp</li>
+              <li>Vẽ cánh cơ bản</li>
+              <li>Vẽ ngăn kéo cơ bản: thông số cơ bản · Thư viện ngăn kéo mẫu</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Phương pháp thực hành</div>
+            <ul class="items">
+              <li>Thao tác với bảng vật liệu khi làm việc cá nhân và nhóm</li>
+              <li>Thao tác dựng các tấm: biểu tượng, chuột phải, lệnh tắt</li>
+              <li>Khi nào cần dựng chi tiết theo giới hạn</li>
+              <li>Ứng dụng của công cụ vẽ profile</li>
+              <li>Thực hành trên 1 khung tủ vuông</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 VL ĐANG SD</span>
+          <span class="chip-label drive">📄 DỰNG VL TẤM</span>
+          <span class="chip-label drive">📄 DỰNG VL THANH</span>
+          <span class="chip-label drive">📄 VẼ CÁNH CB</span>
+          <span class="chip-label drive">📄 VẼ NGĂN KÉO</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">06</div>
+        <div class="topic-title">Lệnh tắt hay dùng</div>
+        <div class="topic-dur">⏱ 20 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Các lệnh tắt</div>
+            <ul class="items">
+              <li>Thao tác con trỏ chuột: F6, bước con trỏ (F2 với load setting)</li>
+              <li>Bắt điểm: Ctrl, Space, Shift, Alt, chuột giữa</li>
+              <li>Đường thẳng phụ và các thiết lập liên quan</li>
+              <li>Sao chép theo điểm, cắt, dán, sao chép theo đường dẫn</li>
+              <li>Kéo dãn đối tượng và các lệnh liên quan</li>
+              <li>Đối xứng, xoay đối tượng</li>
+              <li>Đo khoảng cách, dim trên màn hình 3D</li>
+              <li>Thay đổi hướng nhìn, thay đổi hiển thị đối tượng</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Phương pháp</div>
+            <ul class="items">
+              <li>Thực hành trên BTTH 01</li>
+              <li>Giới thiệu lệnh tắt của thao tác dựng hình cơ bản</li>
+              <li>Vị trí ở trong file HDSD 2023</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 PHÍM TẮT HAY SD</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">07</div>
+        <div class="topic-title">Chỉnh sửa chi tiết</div>
+        <div class="topic-dur">⏱ 20 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Kỹ năng chỉnh sửa</div>
+            <ul class="items">
+              <li>Khoét lỗ, khấu góc, bo góc R, vát góc, khấu khoét</li>
+              <li>Vẽ panel với biên dạng bất kỳ</li>
+              <li>Vẽ biên dạng panel khi có file CAD (DXF 2007)</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Ứng dụng thực tế</div>
+            <ul class="items">
+              <li>Khoét thủng: hút mùi tủ bếp, khoét lỗ đi dây điện, khoét ô cánh kính</li>
+              <li>Bo góc, vát góc với bàn, tủ góc, tủ áo</li>
+              <li>Biên dạng CNC, vách CNC</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 CHỈNH SỬA CT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">08</div>
+        <div class="topic-title">Scripts</div>
+        <div class="topic-dur">⏱ 30 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Thiết lập hiển thị trên thanh công cụ</li>
+              <li>Các thao tác với scripts cơ bản: khấu khoét, khâu răng lược, chuyển obj sang Bazis…</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 THAO TÁC VỚI SCRIPTS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header">
+        <div class="topic-icon">🖊</div>
+        <div class="topic-title">Bài tập thực hành 01 & 02</div>
+        <div class="topic-dur">⏱ 60 ph</div>
+        <div class="chevron">▾</div>
+      </div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Mục tiêu</div>
+            <ul class="items"><li>Thực hành các thao tác cơ bản của dựng hình</li></ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 TH 01</span>
+          <span class="chip-label youtube">🎬 BTTH 02</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="break-row">☕ <span>Nghỉ hết buổi 2</span><span class="dur">180 phút nghỉ</span></div>
+  </div>
+</div>
+
+<!-- ===== BUỔI 2 ===== -->
+<div class="session-block" id="s1">
+  <div class="session-header">
+    <div class="session-badge">02</div>
+    <div class="session-info">
+      <h2>Mặt cắt · Bản vẽ 2D · Vật liệu · Phụ kiện · Nẹp cạnh</h2>
+      <p>Xuất hồ sơ shop drawing · Phụ kiện liên kết · Nẹp cạnh · Phủ mặt · Xoi rãnh</p>
+    </div>
+    <div class="session-time">
+      <div class="mins">205<small>ph</small></div>
+      <div class="label">Thời gian học</div>
+    </div>
+  </div>
+  <div class="topics-stack">
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">01</div><div class="topic-title">Mặt cắt / Lát cắt</div><div class="topic-dur">⏱ 10 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Thiết lập mặt cắt cho đối tượng 3D, cho block (sử dụng Thuộc tính chi tiết)</li>
+              <li>Thiết lập mặt cắt để trích dẫn, phóng to</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Ứng dụng</div>
+            <ul class="items">
+              <li>Hỗ trợ xuất hồ sơ shop drawing</li>
+              <li>Hỗ trợ bản vẽ lắp dựng</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources"><span class="chip-label youtube">🎬 TAO MAT CAT</span></div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">02</div><div class="topic-title">Xuất bản vẽ 2D và trình bày</div><div class="topic-dur">⏱ 40 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="yt-embed-row">
+          <div class="body-grid">
+            <div class="body-col">
+              <div class="col-label">Nội dung</div>
+              <ul class="items">
+                <li>Các thiết lập xuất hồ sơ 2D · Trang bìa · Khung tên</li>
+                <li>Thao tác lệnh trên bản vẽ 2D, trình bày lại HS 2D và in ấn</li>
+                <li>Xuất bản vẽ phục vụ duyệt SHOP</li>
+              </ul>
+            </div>
+            <div class="body-col">
+              <div class="col-label">Hai nội dung chính</div>
+              <ul class="items">
+                <li>Xuất bản vẽ hồ sơ SHOP</li>
+                <li>Bản vẽ lắp dựng</li>
+              </ul>
+            </div>
+          </div>
+          <div class="yt-embed-panel" onclick="event.stopPropagation()">
+            <div class="yt-label">▶ Video hướng dẫn</div>
+            <div class="yt-frame">
+              <iframe src="https://www.youtube.com/embed/khOfmEG_M_4" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
+            <a class="yt-open-btn" href="https://youtu.be/khOfmEG_M_4" target="_blank">↗ Mở trên YouTube</a>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 TI LE KHUNG TEN VA TRINH BAY BV</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">🖊</div><div class="topic-title">Thực hành · Hồ sơ lắp đặt & Shop Drawing</div><div class="topic-dur">⏱ 30 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Mục tiêu</div>
+            <ul class="items"><li>Hồ sơ lắp đặt dạng các hình chiếu</li><li>Hồ sơ duyệt shop</li></ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 SĐL 2D</span>
+          <span class="chip-label youtube">🎬 XUAT BV HO TRO SHOPDRAWING</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">03</div><div class="topic-title">Thay đổi vật liệu</div><div class="topic-dur">⏱ 10 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Thay đổi tên vật liệu sang loại vật liệu khác</li>
+              <li>Thay đổi độ dày vật liệu và thay đổi lân cận</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources"><span class="chip-label drive">📄 THAY DOI VLIEU</span></div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">04</div><div class="topic-title">Phụ kiện</div><div class="topic-dur">⏱ 20 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Các loại phụ kiện</div>
+            <ul class="items">
+              <li>Giới thiệu chung về phụ kiện liên kết</li>
+              <li>Thiết lập phụ kiện dạng thông số</li>
+              <li>Phụ kiện dạng tùy ý: Tạo và sử dụng</li>
+              <li>Phụ kiện Fragment: Tạo và sử dụng</li>
+              <li>Sơ đồ phụ kiện</li>
+              <li>Thay thế phụ kiện và xóa phụ kiện</li>
+              <li>Gắn phụ kiện theo khớp liên kết · Gắn từ File browser</li>
+              <li>Các lưu ý về phụ kiện liên kết trên Bazis</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 PHU KIỆN</span>
+          <span class="chip-label drive">📄 THAO TÁC GẮN PK</span>
+          <span class="chip-label drive">📄 TD PK</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">05</div><div class="topic-title">Nẹp cạnh</div><div class="topic-dur">⏱ 15 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Giới thiệu chung về bảng "Nẹp sử dụng"</li>
+              <li>Tạo và thêm loại nẹp</li>
+              <li>Gắn nẹp cạnh: thủ công, tự động (lưu ý tự trừ kích thước cắt, thêm phần dự phòng)</li>
+              <li>Thay thế vật liệu nẹp · Xóa nẹp cạnh</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Lưu ý quan trọng</div>
+            <ul class="items">
+              <li>Các trường hợp xảy ra dễ gây lỗi</li>
+              <li>Thao tác xử lý để giảm sai sót nhầm lẫn với dán nẹp và định mức nẹp</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 NẸP CẠNH</span>
+          <span class="chip-label drive">📄 CHI DINH CANH DAN SAU CUNG</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">06</div><div class="topic-title">Phủ mặt</div><div class="topic-dur">⏱ 10 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Phủ bề mặt vật liệu: ứng dụng cho chi tiết phủ laminate, sơn đẹp</li>
+              <li>Gắn mặt để tính định mức sơn</li>
+              <li>Xóa phủ bề mặt</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources"><span class="chip-label drive">📄 PHỦ MẶT</span></div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">07</div><div class="topic-title">Cắt đa năng</div><div class="topic-dur">⏱ 15 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Ứng dụng của lệnh cắt đa năng</li>
+              <li>Thao tác và thiết lập thuộc tính: xoi, hạ nền</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources"><span class="chip-label drive">📄 XOI VÀ CS CẠNH</span></div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">08</div><div class="topic-title">Xoi và chỉnh sửa cạnh</div><div class="topic-dur">⏱ 10 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Thiết lập các loại rãnh xoi, hạ nền: thao tác, thông số, tùy biến</li>
+              <li>Tùy chỉnh đường xoi, kiểu xoi: biên dạng xoi pano, tay móc vát</li>
+              <li>Xóa rãnh xoi · Ứng dụng lệnh xoi trong thực tế</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">🖊</div><div class="topic-title">Bài tập thực hành 2: Tủ trang trí 3 ngăn kéo 1 cánh mở</div><div class="topic-dur">⏱ 20 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Mục tiêu</div>
+            <ul class="items">
+              <li>Hoàn thiện BTTH 1</li>
+              <li>Gắn phụ kiện, gắn nẹp cạnh, xoi rãnh</li>
+              <li>Dựng tủ trang trí 3 ngăn kéo 1 cánh mở</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources"><span class="chip-label drive">📄 BTTH 3NK-1C</span></div>
+      </div>
+    </div>
+
+    <div class="break-row">☕ <span>Nghỉ hết buổi 3</span><span class="dur">180 phút nghỉ</span></div>
+  </div>
+</div>
+
+<!-- ===== BUỔI 3 ===== -->
+<div class="session-block" id="s2">
+  <div class="session-header">
+    <div class="session-badge">03</div>
+    <div class="session-info">
+      <h2>Nhập/Xuất file · Sơ đồ lắp đặt · Fragment</h2>
+      <p>Trao đổi file với phần mềm bên thứ 3 · Sơ đồ lắp step-by-step · Fragment tham số</p>
+    </div>
+    <div class="session-time">
+      <div class="mins">200<small>ph</small></div>
+      <div class="label">Thời gian học</div>
+    </div>
+  </div>
+  <div class="topics-stack">
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">10</div><div class="topic-title">Nhập / Xuất với phần mềm bên thứ 3</div><div class="topic-dur">⏱ 20 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="yt-embed-row">
+          <div class="body-grid">
+            <div class="body-col">
+              <div class="col-label">Nội dung</div>
+              <ul class="items">
+                <li>Import CAD 2D, file Max, file SketchUp để dựng hình</li>
+                <li>Xuất file cho bên thứ 3 diễn họa: 3Ds Max, SketchUp</li>
+                <li>Import file bóc sản xuất trên SketchUp, kế thừa và bóc sản xuất</li>
+              </ul>
+            </div>
+            <div class="body-col">
+              <div class="col-label">Tài liệu khác</div>
+              <ul class="items">
+                <li><span class="chip-label youtube" style="display:inline-flex">🎬 CHUYEN FILE OBJ THANH FILE BAZIS</span></li>
+                <li><span class="chip-label youtube" style="display:inline-flex">🎬 XUAT SANG SKETCH UP-3DSMAX</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="yt-embed-panel" onclick="event.stopPropagation()">
+            <div class="yt-label">▶ Xuất sang SketchUp / 3DSMAX</div>
+            <div class="yt-frame">
+              <iframe src="https://www.youtube.com/embed/ivRtdI79Wik" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </div>
+            <a class="yt-open-btn" href="https://youtu.be/ivRtdI79Wik" target="_blank">↗ Mở trên YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">11</div><div class="topic-title">Sơ đồ lắp đặt</div><div class="topic-dur">⏱ 40 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Tạo sơ đồ lắp cơ bản</li>
+              <li>Tạo sơ đồ lắp step by step</li>
+              <li>Tạo sơ đồ lắp cho đối tượng lắp ráp</li>
+              <li>Tạo sơ đồ lắp cho block</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 TAO SO DO LAP DAT TUNG BUOC</span>
+          <span class="chip-label drive">📄 SƠ ĐỒ LẮP ĐẶT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">12</div><div class="topic-title">Fragment</div><div class="topic-dur">⏱ 60 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Các loại Fragment</div>
+            <ul class="items">
+              <li>Cách sử dụng fragment</li>
+              <li>Tạo fragment theo mặt phẳng co dãn và ứng dụng</li>
+              <li>Tạo Fragment theo khoang tham số và ứng dụng</li>
+              <li>Tạo fragment đơn vị và ứng dụng</li>
+              <li>Tạo các đối tượng 3D thành fragment</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label youtube">🎬 FRAGMENT</span>
+          <span class="chip-label drive">📄 FRAGMENT</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">🖊</div><div class="topic-title">Bài tập thực hành 3: Dựng 4 Tủ Áo cánh lùa bằng Fragment</div><div class="topic-dur">⏱ 60 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Mục tiêu</div>
+            <ul class="items"><li>Dựng sản phẩm bằng Tủ áo cánh lùa bằng Fragment</li></ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <a class="chip-link drive" href="https://drive.google.com/file/d/1INPz41hs6qq6LeXs_MdfwoVR3X9aX9Sx/view?usp=sharing" target="_blank">📁 File bài tập tủ áo (Google Drive)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="break-row">☕ <span>Nghỉ hết buổi 4</span><span class="dur">180 phút nghỉ</span></div>
+  </div>
+</div>
+
+<!-- ===== BUỔI 4 ===== -->
+<div class="session-block" id="s3">
+  <div class="session-header">
+    <div class="session-badge">04</div>
+    <div class="session-info">
+      <h2>Dự án · BAZIS CNC · Woodsoft Nesting</h2>
+      <p>Quản lý dự án · Xuất file CNC · Cấu hình postprocessor · Woodsoft Nesting thực chiến</p>
+    </div>
+    <div class="session-time">
+      <div class="mins">240<small>ph</small></div>
+      <div class="label">Thời gian học</div>
+    </div>
+  </div>
+  <div class="topics-stack">
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">01</div><div class="topic-title">Làm việc với Dự án</div><div class="topic-dur">⏱ 20 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Cách tạo dự án</li>
+              <li>Quản lý tiến độ qua dự án</li>
+              <li>Thông số cơ bản của làm việc với dự án</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Thực hành</div>
+            <ul class="items">
+              <li>Tạo dự án với các sản phẩm đã vẽ</li>
+              <li>Xuất file CSV đơn hàng quản lý</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources"><span class="chip-label youtube">🎬 LÀM VIỆC VỚI DỰ ÁN</span></div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">02</div><div class="topic-title">BAZIS CNC</div><div class="topic-dur">⏱ 60 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung</div>
+            <ul class="items">
+              <li>Tìm hiểu các thiết lập xuất file CNC: khoan 5M, 6M</li>
+              <li>Thiết lập xuất file CNC cho từng chi tiết</li>
+              <li>Tùy chỉnh chi tiết: thêm bớt lỗ khoan, rãnh xoi, thứ tự cắt CT</li>
+              <li>Thiết lập dữ liệu xuất DXF cho Woodsoft Nesting</li>
+              <li>Thiết lập quản lý file xuất ra: tên file, thư mục đơn hàng</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 THAO TAC XUAT FILE MAY 6M</span>
+          <span class="chip-label drive">📄 GIA CONG NESTING TUNG CHI TIET</span>
+          <span class="chip-label drive">📄 BAZIS CNC</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">03</div><div class="topic-title">Woodsoft Nesting</div><div class="topic-dur">⏱ 40 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Nội dung cốt lõi</div>
+            <ul class="items">
+              <li>Thiết lập cấu hình và postprocessor cho máy CNC</li>
+              <li>Thao tác với Woodsoft Nesting, các lưu ý quan trọng</li>
+            </ul>
+          </div>
+          <div class="body-col">
+            <div class="col-label">Tài liệu bổ sung (tên file trong Drive)</div>
+            <ul class="items">
+              <li>THIET LAP LK CAM U</li>
+              <li>THAO TAC LAM CANH PANO</li>
+              <li>RA FILE CNC TỪ DL EXCEL</li>
+              <li>TẠO LK VÍT GÀI TRÊN WS</li>
+              <li>RENET SĐC TU ABF SKETCH UP</li>
+              <li>THAO TÁC CHUYỂN DXF THÀNH GCODE</li>
+              <li>TỐI ƯU VỚI DANH SÁCH VÁN DC</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 HD TAO POSTPROCESSOR</span>
+          <span class="chip-label youtube">🎬 HD LOAD CAU HINH</span>
+          <span class="chip-label drive">📄 LINK CẤU HÌNH CNC 4D</span>
+          <span class="chip-label youtube">🎬 Thao tác load cấu hình 4D</span>
+          <span class="chip-label drive">📄 CÁC LƯU Ý KHI SD WS NESTING</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">🖊</div><div class="topic-title">Thực hành: Dựng hình & Xuất file CNC 1 sản phẩm</div><div class="topic-dur">⏱ 60 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Mục tiêu</div>
+            <ul class="items"><li>Dựng hình và xuất file cắt 1 sản phẩm hoàn chỉnh</li></ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources">
+          <span class="chip-label drive">📄 TU DUNG HINH CB- RA FILE CNC</span>
+          <span class="chip-label youtube">🎬 DUNG HINH- WS NESTING</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="break-row">☕ <span>Nghỉ hết buổi 5</span><span class="dur">180 phút nghỉ</span></div>
+  </div>
+</div>
+
+<!-- ===== BUỔI 5 ===== -->
+<div class="session-block" id="s4">
+  <div class="session-header">
+    <div class="session-badge">05</div>
+    <div class="session-info">
+      <h2>Cabinet · Bài tập tốt nghiệp · Tổng kết</h2>
+      <p>Thực hành Cabinet · Bài tập tốt nghiệp toàn diện · Tổng kết chương trình</p>
+    </div>
+    <div class="session-time">
+      <div class="mins">180<small>ph</small></div>
+      <div class="label">Thời gian học</div>
+    </div>
+  </div>
+  <div class="topics-stack">
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">🖊</div><div class="topic-title">Bài tập thực hành 5: Dựng sản phẩm bằng Cabinet</div><div class="topic-dur">⏱ 30 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Mục tiêu</div>
+            <ul class="items"><li>Thực hành dựng sản phẩm bằng công cụ Cabinet trong BAZIS</li></ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card practice" onclick="toggle(this)">
+      <div class="topic-header"><div class="topic-icon">🎓</div><div class="topic-title">Làm bài tập tốt nghiệp</div><div class="topic-dur">⏱ 60 ph</div><div class="chevron">▾</div></div>
+      <div class="topic-body">
+        <div class="body-grid">
+          <div class="body-col">
+            <div class="col-label">Yêu cầu</div>
+            <ul class="items">
+              <li>Làm đủ các bài tập theo file đính kèm</li>
+              <li>Vận dụng toàn bộ kiến thức đã học trong chương trình</li>
+            </ul>
+          </div>
+          <div class="body-col"></div>
+        </div>
+        <div class="resources"><span class="chip-label drive">📄 BÀI TẬP TỐT NGHIỆP</span></div>
+      </div>
+    </div>
+
+    <div class="summary-card">
+      <h3>∑ Tổng thời gian dự kiến · Tổng kết chương trình</h3>
+      <p>Ôn lại toàn bộ nội dung · Giải đáp thắc mắc · Tổng kết và đánh giá học viên<br>
+      <strong style="color:var(--accent)">Thời gian tổng kết: 90 phút</strong> &nbsp;·&nbsp; Biên soạn: <strong>Lương Văn Sao</strong></p>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end .main -->
+
+<footer>
+  <p>KẾ HOẠCH HƯỚNG DẪN · BAZIS – Woodsoft Nesting · QHOME 2024</p>
+  <p style="margin-top:6px">Người lập: <strong>Lương Văn Sao</strong></p>
+</footer>
+
+<script>
+  function show(idx) {
+    document.querySelectorAll('.session-block').forEach((b,i) => b.classList.toggle('active', i===idx));
+    document.querySelectorAll('.nav-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function toggle(card) {
+    if (!card.classList.contains('topic-card')) return;
+    const wasOpen = card.classList.contains('open');
+    card.closest('.topics-stack')?.querySelectorAll('.topic-card.open').forEach(c => { if(c!==card) c.classList.remove('open'); });
+    card.classList.toggle('open', !wasOpen);
+  }
+  document.querySelector('.session-block.active .topic-card')?.classList.add('open');
+</script>
+</body>
+</html>
