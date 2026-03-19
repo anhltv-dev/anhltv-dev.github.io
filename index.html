@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kế Hoạch Hướng Dẫn – BAZIS & Woodsoft Nesting</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #f8f9fa;
@@ -272,9 +272,12 @@
   }
 
   .session-info h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px; font-weight: 800;
-    color: var(--ink); margin-bottom: 8px;
+    font-size: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
   }
 
   .session-info p { color: var(--muted); font-size: 16px; }
@@ -549,53 +552,45 @@
   }
   .summary-card p { color: var(--ink2); font-size: 14px; line-height: 1.7; font-weight: 500; }
 
-  /* YouTube embed */
-  .yt-embed-row {
-    display: flex; gap: 0;
+  /* ── EMBEDDING ──────────────────────────── */
+  .embed-row {
+    display: flex;
+    gap: 0;
     border-top: 1px solid var(--border);
   }
-  .yt-embed-row .body-grid {
+  .embed-panel {
     flex: 1;
-  }
-  .yt-embed-panel {
-    width: 340px; flex-shrink: 0;
-    border-left: 1px solid var(--border);
+    padding: 20px;
     background: #fafbff;
-    display: flex; flex-direction: column;
-    align-items: stretch; justify-content: flex-start;
-    padding: 16px;
-    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
-  .yt-label {
+  .embed-panel + .embed-panel {
+    border-left: 1px solid var(--border);
+  }
+  .embed-label {
     font-size: 10px; font-weight: 800; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--red);
-    display: flex; align-items: center; gap: 7px;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: 8px;
   }
-  .yt-label::before {
-    content: ''; display: inline-block; width: 14px; height: 2px;
-    background: var(--red); border-radius: 2px;
+  .embed-label::before {
+    content: ''; display: inline-block; width: 14px; height: 1px;
+    background: var(--accent);
   }
-  .yt-frame {
+  .embed-frame {
     width: 100%; aspect-ratio: 16/9;
     border-radius: 10px; overflow: hidden;
     border: 1px solid var(--border);
-    box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
-  .yt-frame iframe {
-    width: 100%; height: 100%; display: block; border: none;
+  .embed-frame iframe {
+    width: 100% !important; height: 100% !important; display: block; border: none;
   }
-  .yt-open-btn {
-    display: flex; align-items: center; justify-content: center; gap: 6px;
-    font-size: 12px; font-weight: 700; color: var(--red);
-    background: var(--red-light); border: 1px solid rgba(208,63,47,0.2);
-    border-radius: 8px; padding: 7px 14px;
-    text-decoration: none; transition: all 0.16s;
-  }
-  .yt-open-btn:hover { background: #f9d9d5; border-color: var(--red); }
 
   @media (max-width: 860px) {
-    .yt-embed-row { flex-direction: column; }
-    .yt-embed-panel { width: 100%; border-left: none; border-top: 1px solid var(--border); }
+    .embed-row { flex-direction: column; }
+    .embed-panel + .embed-panel { border-left: none; border-top: 1px solid var(--border); }
   }
 
   /* Footer */
@@ -641,8 +636,8 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-content">
-    <div class="hero-eyebrow"><span class="dot"></span> ĐÀO TẠO CHUYÊN SÂU 2026</div>
-    <h1 class="hero-title">Khóa học <span>BAZIS - WOODSOFT OPTIMIZERS</span><br>cơ bản</h1>
+    <div class="hero-eyebrow"><span class="dot"></span> KHÓA HỌC CƠ BẢN CHO NGƯỜI MỚI</div>
+    <h1 class="hero-title">BAZIS - WOODSOFT OPTIMIZERS</h1>
     <p class="hero-subtitle">Từ bản vẽ 3D đến G-Code chạy CNC: xử lý dữ liệu chỉ với một lần bấm chuột. <br>Học máy, học nghề, làm chủ công nghệ Nesting hiện đại.</p>
     <div class="stats-row">
       <div class="stat-pill"><span class="val">5</span> Buổi học</div>
@@ -695,10 +690,18 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BUkOYDUPqkAW1c7cTxrV4dF7Yrp16a3u/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 GIỚI THIỆU TỔNG THỂ</span>
-          <span class="chip-label drive">📄 WEB WOODSOFT OPTIMIZER</span>
-          <span class="chip-label youtube">🎬 VD GT TONG THE WS OPTIMIZERS</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BUkOYDUPqkAW1c7cTxrV4dF7Yrp16a3u" target="_blank">📁 Tài liệu hệ thống</a>
+          <a class="chip-link drive" href="https://woodsoft.vn/optimizers/" target="_blank">🌐 Web Woodsoft Optimizer</a>
+          <a class="chip-link youtube" href="https://drive.google.com/open?id=1CiBgozyjXyDVt2hME1YT7JleUHv4Z0Xz" target="_blank">▶ Video giới thiệu</a>
         </div>
       </div>
     </div>
@@ -732,10 +735,24 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BHP0UL7cLgMxCdbQrdPh8Hg44TMmka2D/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Thiết lập CSDL</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/11KidNk-03zE-L8HVBBi5mfA68wNw3AsF/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 THIẾT LẬP GIAO DIỆN</span>
-          <span class="chip-label drive">📄 THIẾT LẬP ĐƯỜNG DẪN CSDL</span>
-          <span class="chip-label drive">📄 VI TRI FILE AUTOSAVE</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BHP0UL7cLgMxCdbQrdPh8Hg44TMmka2D" target="_blank">📁 Thiết lập giao diện</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=11KidNk-03zE-L8HVBBi5mfA68wNw3AsF" target="_blank">📁 Đường dẫn CSDL</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BAhD7nmT96qPhe7zJZnypU0VkcFbNWTx" target="_blank">📁 Lưu & Khôi phục</a>
         </div>
       </div>
     </div>
@@ -771,14 +788,25 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Cấu trúc đối tượng</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BSlKICBkoYQRC2I5XhdjOXx2jvrDFM_6/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Thuộc tính chi tiết</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1u3neMMmKbZt-10oHY9YTmu1-fjhBvuM8/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 CAU TRUC DT 3D</span>
-          <span class="chip-label drive">📄 THUỘC TÍNH CT</span>
-          <span class="chip-label drive">📄 FILE BROWSER</span>
-          <span class="chip-label drive">📄 LỊCH SỬ DỰNG</span>
-          <span class="chip-label drive">📄 PHAN TICH 3D</span>
-          <span class="chip-label drive">📄 CS HIỂN THỊ VLIEU</span>
-          <span class="chip-label drive">📄 THU VIỆN</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BSlKICBkoYQRC2I5XhdjOXx2jvrDFM_6" target="_blank">📁 Cấu trúc 3D</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1u3neMMmKbZt-10oHY9YTmu1-fjhBvuM8" target="_blank">📁 Thuộc tính CT</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BVFqld8-luJ3OVR_T0WVr_be8Q0oYXIS" target="_blank">📁 File Browser</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BBOW4-LX_1cimLOeiq9iwRMQkJIU05Th" target="_blank">📁 Lịch sử dựng</a>
         </div>
       </div>
     </div>
@@ -808,9 +836,17 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Cơ sở dữ liệu</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BUeeFgHwOyXDexo2apgKaeBPcrg0jWuz/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 SƠ BỘ VỀ CSDL</span>
-          <span class="chip-label drive">📄 TAO VAT TU DANG TAM</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BUeeFgHwOyXDexo2apgKaeBPcrg0jWuz" target="_blank">📁 Sơ bộ CSDL</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=18Eqptja3YEAYZXsWoZXHITyMCAtuiAaO" target="_blank">📁 Tạo vật tư mới</a>
         </div>
       </div>
     </div>
@@ -847,12 +883,18 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BFnTEoKpiqfPUDYF3vwvyzk2yjGaoF6G/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 VL ĐANG SD</span>
-          <span class="chip-label drive">📄 DỰNG VL TẤM</span>
-          <span class="chip-label drive">📄 DỰNG VL THANH</span>
-          <span class="chip-label drive">📄 VẼ CÁNH CB</span>
-          <span class="chip-label drive">📄 VẼ NGĂN KÉO</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BFnTEoKpiqfPUDYF3vwvyzk2yjGaoF6G" target="_blank">📁 Dựng vật liệu tấm</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BG6t6su4iTYzCVADWP8k-KlwCJAlXzhG" target="_blank">📁 Vẽ cánh cơ bản</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BMLEJvrczU-hLLaXcdUXw8dPjUYAuA3Z" target="_blank">📁 Vẽ ngăn kéo</a>
         </div>
       </div>
     </div>
@@ -888,8 +930,16 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1By3wgh86vE_56sKgar_vByw_FO5d0toL/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 PHÍM TẮT HAY SD</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1By3wgh86vE_56sKgar_vByw_FO5d0toL" target="_blank">📁 Phím tắt hay dùng</a>
         </div>
       </div>
     </div>
@@ -920,8 +970,16 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BTF3mxzwAaanCZoLnHWm3alpV5b0P9Qc/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 CHỈNH SỬA CT</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BTF3mxzwAaanCZoLnHWm3alpV5b0P9Qc" target="_blank">📁 Chỉnh sửa chi tiết</a>
         </div>
       </div>
     </div>
@@ -944,8 +1002,16 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BTAKXA-olJjoh53UbPKNMF_Bv8NMPweu/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 THAO TÁC VỚI SCRIPTS</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BTAKXA-olJjoh53UbPKNMF_Bv8NMPweu" target="_blank">📁 Tài liệu Scripts</a>
         </div>
       </div>
     </div>
@@ -1010,41 +1076,40 @@
             </ul>
           </div>
         </div>
-        <div class="resources"><span class="chip-label youtube">🎬 TAO MAT CAT</span></div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Video hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://www.youtube.com/embed/jIepj01oIks"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link youtube" href="https://youtu.be/jIepj01oIks" target="_blank">▶ Video mặt cắt</a>
+        </div>
       </div>
     </div>
 
     <div class="topic-card" onclick="toggle(this)">
       <div class="topic-header"><div class="topic-icon">02</div><div class="topic-title">Xuất bản vẽ 2D và trình bày</div><div class="topic-dur">⏱ 40 ph</div><div class="chevron">▾</div></div>
       <div class="topic-body">
-        <div class="yt-embed-row">
-          <div class="body-grid">
-            <div class="body-col">
-              <div class="col-label">Nội dung</div>
-              <ul class="items">
-                <li>Các thiết lập xuất hồ sơ 2D · Trang bìa · Khung tên</li>
-                <li>Thao tác lệnh trên bản vẽ 2D, trình bày lại HS 2D và in ấn</li>
-                <li>Xuất bản vẽ phục vụ duyệt SHOP</li>
-              </ul>
-            </div>
-            <div class="body-col">
-              <div class="col-label">Hai nội dung chính</div>
-              <ul class="items">
-                <li>Xuất bản vẽ hồ sơ SHOP</li>
-                <li>Bản vẽ lắp dựng</li>
-              </ul>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BCh4kWdMcSLqaiL5NU1LvYL7bpz9SPpI/preview"></iframe>
             </div>
           </div>
-          <div class="yt-embed-panel" onclick="event.stopPropagation()">
-            <div class="yt-label">▶ Video hướng dẫn</div>
-            <div class="yt-frame">
-              <iframe src="https://www.youtube.com/embed/khOfmEG_M_4" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          <div class="embed-panel">
+            <div class="embed-label">Video hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://www.youtube.com/embed/khOfmEG_M_4"></iframe>
             </div>
-            <a class="yt-open-btn" href="https://youtu.be/khOfmEG_M_4" target="_blank">↗ Mở trên YouTube</a>
           </div>
         </div>
         <div class="resources">
-          <span class="chip-label drive">📄 TI LE KHUNG TEN VA TRINH BAY BV</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BCh4kWdMcSLqaiL5NU1LvYL7bpz9SPpI" target="_blank">📁 Tài liệu 2D</a>
+          <a class="chip-link youtube" href="https://youtu.be/khOfmEG_M_4" target="_blank">▶ Link YouTube</a>
         </div>
       </div>
     </div>
@@ -1079,7 +1144,17 @@
           </div>
           <div class="body-col"></div>
         </div>
-        <div class="resources"><span class="chip-label drive">📄 THAY DOI VLIEU</span></div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BM54uz1lFuBdOJJrW8I9RjuDR91Ov5GI/preview"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BM54uz1lFuBdOJJrW8I9RjuDR91Ov5GI" target="_blank">📁 Thay đổi vật liệu</a>
+        </div>
       </div>
     </div>
 
@@ -1102,10 +1177,24 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BMd3LtCx-cMCipw_SPk8AAZA2dWXvODp/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Thiết lập phụ kiện</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BTzEBdyJTWQH-D4LCZnS06a1Ce1ZEN-w/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 PHU KIỆN</span>
-          <span class="chip-label drive">📄 THAO TÁC GẮN PK</span>
-          <span class="chip-label drive">📄 TD PK</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BMd3LtCx-cMCipw_SPk8AAZA2dWXvODp" target="_blank">📁 Giới thiệu PK</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BTzEBdyJTWQH-D4LCZnS06a1Ce1ZEN-w" target="_blank">📁 Thiết lập PK</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BKJRMNLXktn1fZPSFIEWXs8HSJvT_Axb" target="_blank">📁 Thay thế PK</a>
         </div>
       </div>
     </div>
@@ -1131,9 +1220,23 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BHpxdHpUT6EtKdTvbVTAvAHUatDs_hbT/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Thao tác & Thêm nẹp</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BQO4a-xkL8YWKMW5aqLkn6rMw_IEnaB_/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 NẸP CẠNH</span>
-          <span class="chip-label drive">📄 CHI DINH CANH DAN SAU CUNG</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BHpxdHpUT6EtKdTvbVTAvAHUatDs_hbT" target="_blank">📁 Tài liệu nẹp</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BQO4a-xkL8YWKMW5aqLkn6rMw_IEnaB_" target="_blank">📁 Thêm nẹp mới</a>
         </div>
       </div>
     </div>
@@ -1152,7 +1255,17 @@
           </div>
           <div class="body-col"></div>
         </div>
-        <div class="resources"><span class="chip-label drive">📄 PHỦ MẶT</span></div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BLgQLy_sMo-Kpgmlpxr5AHkpLwNRVzDE/preview"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BLgQLy_sMo-Kpgmlpxr5AHkpLwNRVzDE" target="_blank">📁 Tài liệu phủ mặt</a>
+        </div>
       </div>
     </div>
 
@@ -1169,7 +1282,17 @@
           </div>
           <div class="body-col"></div>
         </div>
-        <div class="resources"><span class="chip-label drive">📄 XOI VÀ CS CẠNH</span></div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BR9cRNuwLU1O-q-X3987OEbpRWRYaexo/preview"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BR9cRNuwLU1O-q-X3987OEbpRWRYaexo" target="_blank">📁 Cắt đa năng</a>
+        </div>
       </div>
     </div>
 
@@ -1230,31 +1353,24 @@
     <div class="topic-card" onclick="toggle(this)">
       <div class="topic-header"><div class="topic-icon">10</div><div class="topic-title">Nhập / Xuất với phần mềm bên thứ 3</div><div class="topic-dur">⏱ 20 ph</div><div class="chevron">▾</div></div>
       <div class="topic-body">
-        <div class="yt-embed-row">
-          <div class="body-grid">
-            <div class="body-col">
-              <div class="col-label">Nội dung</div>
-              <ul class="items">
-                <li>Import CAD 2D, file Max, file SketchUp để dựng hình</li>
-                <li>Xuất file cho bên thứ 3 diễn họa: 3Ds Max, SketchUp</li>
-                <li>Import file bóc sản xuất trên SketchUp, kế thừa và bóc sản xuất</li>
-              </ul>
-            </div>
-            <div class="body-col">
-              <div class="col-label">Tài liệu khác</div>
-              <ul class="items">
-                <li><span class="chip-label youtube" style="display:inline-flex">🎬 CHUYEN FILE OBJ THANH FILE BAZIS</span></li>
-                <li><span class="chip-label youtube" style="display:inline-flex">🎬 XUAT SANG SKETCH UP-3DSMAX</span></li>
-              </ul>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Import CAD 2D</div>
+            <div class="embed-frame">
+              <iframe src="https://www.youtube.com/embed/1I0XgNh4bPxi9qPNpCJahWsb1Oq4ofaHP"></iframe>
             </div>
           </div>
-          <div class="yt-embed-panel" onclick="event.stopPropagation()">
-            <div class="yt-label">▶ Xuất sang SketchUp / 3DSMAX</div>
-            <div class="yt-frame">
-              <iframe src="https://www.youtube.com/embed/ivRtdI79Wik" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+          <div class="embed-panel">
+            <div class="embed-label">Xuất sang 3Ds Max</div>
+            <div class="embed-frame">
+              <iframe src="https://www.youtube.com/embed/ivRtdI79Wik"></iframe>
             </div>
-            <a class="yt-open-btn" href="https://youtu.be/ivRtdI79Wik" target="_blank">↗ Mở trên YouTube</a>
           </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link youtube" href="https://drive.google.com/open?id=1I0XgNh4bPxi9qPNpCJahWsb1Oq4ofaHP" target="_blank">▶ Link Video Import</a>
+          <a class="chip-link youtube" href="https://youtu.be/ivRtdI79Wik" target="_blank">▶ Link Video Export</a>
+          <a class="chip-link youtube" href="https://www.youtube.com/watch?v=oU5MevnUDhU" target="_blank">▶ Bóc SX từ SketchUp</a>
         </div>
       </div>
     </div>
@@ -1274,9 +1390,17 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/18qGNyMCDouhltAlW-sjs_sgzlQjnmRIN/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 TAO SO DO LAP DAT TUNG BUOC</span>
-          <span class="chip-label drive">📄 SƠ ĐỒ LẮP ĐẶT</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=18qGNyMCDouhltAlW-sjs_sgzlQjnmRIN" target="_blank">📁 Sơ đồ lắp đặt</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BBx-UcDfcJPL8HWCeinriJNsv-BHFWQj" target="_blank">📁 Sơ đồ Block</a>
         </div>
       </div>
     </div>
@@ -1297,9 +1421,23 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1BUgxbsN-5sH2HUc49Xud4QL7FaFTiqFe/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Playlist Fragment</div>
+            <div class="embed-frame">
+              <iframe src="https://www.youtube.com/embed/videoseries?list=PLsy5sO5K7wRzOAVdDpDxGcXpHTJKR2YiI"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label youtube">🎬 FRAGMENT</span>
-          <span class="chip-label drive">📄 FRAGMENT</span>
+          <a class="chip-link youtube" href="https://www.youtube.com/playlist?list=PLsy5sO5K7wRzOAVdDpDxGcXpHTJKR2YiI" target="_blank">▶ Playlist Fragment</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1BUgxbsN-5sH2HUc49Xud4QL7FaFTiqFe" target="_blank">📁 Tài liệu Fragment</a>
         </div>
       </div>
     </div>
@@ -1359,7 +1497,17 @@
             </ul>
           </div>
         </div>
-        <div class="resources"><span class="chip-label youtube">🎬 LÀM VIỆC VỚI DỰ ÁN</span></div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Video hướng dẫn</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1uDjBF3EbLR9m6dARdcFtXn8V0oyBj6Zo/preview"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link youtube" href="https://drive.google.com/open?id=1uDjBF3EbLR9m6dARdcFtXn8V0oyBj6Zo" target="_blank">▶ Video Dự án</a>
+        </div>
       </div>
     </div>
 
@@ -1379,10 +1527,24 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Bazis CNC</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1OUJPUEloyWbCQHqL-DSyzUQ_D_N-IJ2t/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Xuất file máy 6M</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1wTIeEY4w3nV897mPWMGH124vmQwsHM-m/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 THAO TAC XUAT FILE MAY 6M</span>
-          <span class="chip-label drive">📄 GIA CONG NESTING TUNG CHI TIET</span>
-          <span class="chip-label drive">📄 BAZIS CNC</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1OUJPUEloyWbCQHqL-DSyzUQ_D_N-IJ2t" target="_blank">📁 Tài liệu CNC</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1wTIeEY4w3nV897mPWMGH124vmQwsHM-m" target="_blank">📁 Xuất file 6M</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1F2Q8GnsxX2uiPy3bYc8jDTiZwkSxjP58" target="_blank">📁 Quản lý file xuất</a>
         </div>
       </div>
     </div>
@@ -1411,12 +1573,24 @@
             </ul>
           </div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Woodsoft Nesting</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1uXK0rG-E5cQ5iw9y0yjHOzZoOCULFxzG/preview"></iframe>
+            </div>
+          </div>
+          <div class="embed-panel">
+            <div class="embed-label">Postprocessor</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1Sr2a7LpL_ozzjkPD-v42kXJCPNIfk1AE/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 HD TAO POSTPROCESSOR</span>
-          <span class="chip-label youtube">🎬 HD LOAD CAU HINH</span>
-          <span class="chip-label drive">📄 LINK CẤU HÌNH CNC 4D</span>
-          <span class="chip-label youtube">🎬 Thao tác load cấu hình 4D</span>
-          <span class="chip-label drive">📄 CÁC LƯU Ý KHI SD WS NESTING</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1uXK0rG-E5cQ5iw9y0yjHOzZoOCULFxzG" target="_blank">📁 Nesting config</a>
+          <a class="chip-link youtube" href="https://drive.google.com/open?id=1Sr2a7LpL_ozzjkPD-v42kXJCPNIfk1AE" target="_blank">▶ Postprocessor</a>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1rAF6vvrLq-8jQNG2FRnsIMRsfz7eDKK_" target="_blank">📁 Lưu ý Nesting</a>
         </div>
       </div>
     </div>
@@ -1431,9 +1605,16 @@
           </div>
           <div class="body-col"></div>
         </div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu thực hành</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/1OUmMmYgwBhDjy3BG3z1VZkn6OCP-EOvB/preview"></iframe>
+            </div>
+          </div>
+        </div>
         <div class="resources">
-          <span class="chip-label drive">📄 TU DUNG HINH CB- RA FILE CNC</span>
-          <span class="chip-label youtube">🎬 DUNG HINH- WS NESTING</span>
+          <a class="chip-link drive" href="https://drive.google.com/open?id=1OUmMmYgwBhDjy3BG3z1VZkn6OCP-EOvB" target="_blank">📁 Tài liệu thực hành</a>
         </div>
       </div>
     </div>
@@ -1483,7 +1664,17 @@
           </div>
           <div class="body-col"></div>
         </div>
-        <div class="resources"><span class="chip-label drive">📄 BÀI TẬP TỐT NGHIỆP</span></div>
+        <div class="embed-row">
+          <div class="embed-panel">
+            <div class="embed-label">Tài liệu tốt nghiệp</div>
+            <div class="embed-frame">
+              <iframe src="https://drive.google.com/file/d/11vF9QPYakIWJmK49Bs1F0gWXs-dpc3MT/preview"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="resources">
+          <a class="chip-link drive" href="https://drive.google.com/open?id=11vF9QPYakIWJmK49Bs1F0gWXs-dpc3MT" target="_blank">📁 Bài tập tốt nghiệp</a>
+        </div>
       </div>
     </div>
 
@@ -1500,7 +1691,7 @@
 </div><!-- end .main-wrapper -->
 
 <footer>
-  <p>KẾ HOẠCH HƯỚNG DẪN · BAZIS – Woodsoft Nesting · QHOME 2024</p>
+  <p>TÀI LIỆU HƯỚNG DẪN TỰ HỌC - BAZIS WOODSOFT OPTIMIZERS</p>
   <p style="margin-top:6px">Người lập: <strong>Lương Văn Sao</strong></p>
 </footer>
 
