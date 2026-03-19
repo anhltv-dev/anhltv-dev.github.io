@@ -53,19 +53,20 @@
     background: var(--white);
     border-right: 1px solid var(--border);
     z-index: 1000;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.03);
     -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
   }
   .sidebar-overlay {
     position: fixed; inset: 0;
     background: rgba(12, 18, 34, 0.4);
-    backdrop-filter: blur(4px);
     z-index: 999;
     opacity: 0; visibility: hidden;
     transition: all 0.3s;
+  }
+  @media (min-width: 769px) {
+    .sidebar-overlay {
+      backdrop-filter: blur(4px);
+    }
   }
   .sidebar-overlay.active { opacity: 1; visibility: visible; }
 
@@ -196,10 +197,11 @@
 
   .hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 6vw, 64px);
+    font-size: clamp(20px, 5.2vw, 56px);
     font-weight: 900; line-height: 1.1;
     margin-bottom: 24px;
     text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    white-space: nowrap;
   }
 
   .hero-title span {
@@ -248,7 +250,11 @@
   .session-block { display: none; }
   .session-block.active {
     display: block;
-    animation: fadeIn 0.4s ease;
+  }
+  @media (min-width: 769px) {
+    .session-block.active {
+      animation: fadeIn 0.4s ease;
+    }
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
@@ -403,7 +409,7 @@
     .body-col + .body-col { border-left: none; border-top: 1px solid var(--light); }
     .session-header { flex-direction: column; text-align: center; padding: 30px; }
     .session-time { margin-left: 0; text-align: center; margin-top: 20px; }
-    .hero-title { font-size: 32px; }
+    .hero-title { font-size: 20px; white-space: normal; }
   }
 
   /* Topic cards */
@@ -1735,6 +1741,14 @@
       toggleSidebar();
     }
   }
+  function loadIframes(container) {
+    container.querySelectorAll('iframe[data-src]').forEach(iframe => {
+      if (iframe.src === 'about:blank' || !iframe.src) {
+        iframe.src = iframe.getAttribute('data-src');
+      }
+    });
+  }
+
   function toggle(card) {
     if (!card.classList.contains('topic-card')) return;
     const wasOpen = card.classList.contains('open');
@@ -1742,11 +1756,16 @@
     if (stack) {
       stack.querySelectorAll('.topic-card.open').forEach(c => { if(c!==card) c.classList.remove('open'); });
     }
-    card.classList.toggle('open', !wasOpen);
+    const isOpening = !wasOpen;
+    card.classList.toggle('open', isOpening);
+    if (isOpening) {
+      loadIframes(card);
+    }
   }
   const initialCard = document.querySelector('.session-block.active .topic-card');
   if (initialCard) {
     initialCard.classList.add('open');
+    loadIframes(initialCard);
   }
 </script>
 </body>
