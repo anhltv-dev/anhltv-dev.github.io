@@ -1,0 +1,71 @@
+Row 1: Title: Thời gian 
+(phút) | Drive: Ghi chú | YT: Đường link GG drive
+Row 2: Title: 30 | Drive: - Giới thiệu các shortcut tương ứng với các module.
+ | YT: GIỚI THIỆU TỔNG THỂ
+Row 4: Title:  | Drive:  | YT: WOODSOFT OPTIMIZER
+Row 5: Title: 30 | Drive:  | YT: THIẾT LẬP GIAO DIỆN
+Row 6: Title:  | Drive:  | YT: THIẾT LẬP ĐƯỜNG DẪN CSDL
+Row 7: Title:  | Drive:  | YT: VI TRI FILE AUTOSAVE
+Row 8: Title: 50 | Drive:  | YT: CAU TRUC DT 3D
+Row 9: Title:  | Drive:  | YT: THUỘC TÍNH CT
+Row 10: Title:  | Drive:  | YT: FILE BROWSER
+Row 11: Title:  | Drive:  | YT: LỊCH SỬ DỰNG
+Row 12: Title:  | Drive:  | YT: PHAN TICH 3D
+Row 13: Title:  | Drive:  | YT: CS HIỂN THỊ VLIEU
+Row 14: Title:  | Drive:  | YT: THU VIỆN
+Row 15: Title: 30 | Drive: THỰC HÀNH TẠO VL: 15P | YT: SƠ BỘ VỀ CSDL
+Row 16: Title:  | Drive:  | YT: TAO VAT TU DANG TAM MOI
+Row 18: Title: 50 | Drive:  | YT: VL ĐANG SD
+Row 19: Title:  | Drive:  | YT: DỰNG VL TẤM
+Row 20: Title:  | Drive:  | YT: DỰNG VL THANH
+Row 21: Title:  | Drive:  | YT: VẼ CÁNH CB
+Row 22: Title:  | Drive:  | YT: VẼ NGĂN KÉO
+Row 23: Title: 20 | Drive: - Thực hành trên BTTH 01
+- Gới thiệu các lệnh tắt của các thao tác dựng hình cơ bản để tối ưu thao tác.
+- Vị trí ở trong file HDSD 2023
+ | YT: PHÍM TẮT HAY SD
+Row 24: Title: 30 | Drive: - Các trường hợp khoét thủng: hút mùi tủ bếp, khoét lỗ đi dây điện, khoét ô cánh kính…
+- Thao tác bo góc, vát góc với bàn, tủ góc, tủ áo …vv
+- Biên dạng CNC, vách cnc … | YT: CHỈNH SỬA CT
+Row 27: Title: 30 | Drive:  | YT: THAO TÁC VỚI SCRIPTS
+Row 29: Title: 60 | Drive:  | YT: TH 01
+Row 31: Title: 20 | Drive: - Hỗ trợ cho công việc xuất hồ sơ shopdrawing.
+- Hỗ trợ bản vẽ lắp dựng. | YT: 
+Row 32: Title: 50 | Drive: - hai nội dung chính: xuất bản vẽ hồ sơ SHOP và bản vẽ lắp dựng | YT: 
+Row 33: Title: 60 | Drive:  | YT: SĐL 2D
+Row 34: Title: 20 | Drive:  | YT: THAY ĐỔI VẬT LIỆU
+Row 37: Title: 20 | Drive:  | YT: PHU KIỆN
+Row 38: Title:  | Drive:  | YT: THAO TÁC GẮN PK
+Row 39: Title:  | Drive:  | YT: XÓA PK
+Row 41: Title:  | Drive:  | YT: LƯU Ý KHI GẮN PK
+Row 42: Title: 15 | Drive: - Lưu ý các trường hợp xảy ra dễ gây lỗi 
+- Thao tác xử lý để giảm sai xót nhầm lẫn với dán nẹp và định mức nẹp | YT: NẸP CẠNH
+Row 43: Title:  | Drive:  | YT: CHỈ ĐỊNH CẠNH ĐẸP DÁN SAU
+Row 45: Title: 10 | Drive:  | YT: PHỦ MẶT
+Row 46: Title: 15 | Drive:  | YT: XOI VÀ CS CẠNH
+Row 47: Title: 10 | Drive: LỆNH CẮT ĐA NĂNG | YT: 
+Row 48: Title: 40 | Drive:  | YT: BTTH 3NK-1C
+Row 54: Title:  | Drive:  | YT: TAO SO DO LAP DAT TUNG BUOC
+Row 56: Title:  | Drive:  | YT: SƠ ĐỒ LẮP ĐẶT
+Row 58: Title:  | Drive: TẠO KHUNG TỦ, ĐỢT CO GIÃN, HỒI  | YT: 
+Row 59: Title:  | Drive: CHIA KHUNG, CHIA ĐỢT | YT: 
+Row 60: Title:  | Drive:  | YT: TAO THU VIEN CANH PANO VỚI FRAGMENT
+Row 61: Title:  | Drive:  | YT: FRAGMENT
+Row 64: Title: 30 | Drive: - Tạo dự án với các sản phẩm đã vẽ.
+- Xuất file csv đơn hàng quản lý  | YT: 
+Row 65: Title: 40 | Drive: 6 MAT FUVICO | YT: THAO TAC XUAT FILE MAY 6M
+Row 66: Title:  | Drive:  | YT: CNC 1 CÔNG ĐOẠN TRÊN CHI TIẾT
+Row 69: Title:  | Drive:  | YT: BAZIS CNC
+Row 71: Title:  | Drive:  | YT: TẠO POSTPROCESSOR
+Row 72: Title:  | Drive:  | YT: LINK CẤU HÌNH CNC 4D
+Row 73: Title:  | Drive: THIET LAP LK CAM U | YT: 
+Row 74: Title:  | Drive: THAO TAC LAM CANH PANO | YT: 
+Row 75: Title:  | Drive: RA FILE CNC TỪ DL EXCEL | YT: 
+Row 76: Title:  | Drive: TẠO LK VÍT GÀI TRÊN WS  | YT: 
+Row 77: Title:  | Drive: RENET SĐC TU ABF SKETCH UP | YT: 
+Row 78: Title:  | Drive: THAO TÁC CHUYỂN DXF THÀNH GCODE | YT: 
+Row 79: Title:  | Drive: TỐI ƯU VỚI DANH  SÁCH VÁN DC | YT: 
+Row 80: Title:  | Drive:  | YT: CÁC LƯU Ý KHI SD WS NESTING
+Row 81: Title: 60 | Drive:  | YT: TU DUNG HINH CB- RA FILE CNC
+Row 86: Title: 70 | Drive:  | YT: VIDEO DỰ TOÁN
+Row 95: Title: 140 | Drive:  | YT: BÀI TẬP TỐT NGHIỆP
