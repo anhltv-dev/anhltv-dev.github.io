@@ -172,7 +172,7 @@
   .hero-content {
     position: relative;
     z-index: 5;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
   }
@@ -584,6 +584,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    align-items: stretch;
   }
   .embed-panel + .embed-panel {
     border-left: 1px solid var(--border);
@@ -598,21 +599,26 @@
     background: var(--accent);
   }
   .embed-frame {
-    width: 100%; position: relative;
+    width: 100%; max-width: 100%; position: relative;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
     height: 0; background: #000;
     border-radius: 10px; overflow: hidden;
     border: 1px solid var(--border);
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin: 0; padding-left: 0; padding-right: 0;
+    box-sizing: border-box;
   }
   .embed-frame iframe {
-    position: absolute; top: 0; left: 0;
+    position: absolute; top: 0; left: 0; bottom: 0; right: 0;
     width: 100%; height: 100%; display: block; border: none;
+    margin: 0; padding: 0;
   }
 
   @media (max-width: 860px) {
-    .embed-row { flex-direction: column; }
+    .embed-row { flex-direction: column; align-items: stretch; width: 100%; max-width: 100%; }
+    .embed-panel { width: auto; padding: 15px; align-self: stretch; max-width: 100%; }
     .embed-panel + .embed-panel { border-left: none; border-top: 1px solid var(--border); }
+    .embed-label { justify-content: center; }
   }
 
   /* Footer */
@@ -632,7 +638,7 @@
     .body-grid { grid-template-columns: 1fr; }
     .body-col + .body-col { border-left: none; border-top: 1px solid var(--border); }
     .session-time { display: none; }
-    .session-header { gap: 14px; }
+    .main { padding: 30px 15px 60px; }
   }
 </style>
 </head>
@@ -661,7 +667,7 @@
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="dot"></span> KHÓA HỌC CƠ BẢN CHO NGƯỜI MỚI</div>
     <h1 class="hero-title">BAZIS - WOODSOFT OPTIMIZERS</h1>
-    <p class="hero-subtitle">Từ bản vẽ 3D đến G-Code chạy CNC: xử lý dữ liệu chỉ với một lần bấm chuột. <br>Học máy, học nghề, làm chủ công nghệ Nesting hiện đại.</p>
+    <p class="hero-subtitle">Từ bản vẽ 3D đến G-Code chạy CNC: xử lý dữ liệu chỉ với một lần bấm&nbsp;chuột. <br>Học máy, học nghề, làm chủ công nghệ Nesting hiện đại.</p>
     <div class="stats-row">
       <div class="stat-pill"><span class="val">5</span> Buổi học</div>
       <div class="stat-pill"><span class="val">20+</span> Chủ đề</div>
@@ -1720,12 +1726,12 @@
 
 <script>
   function show(idx) {
-    const blocks = document.querySelectorAll('.session-block');
-    const tabs = document.querySelectorAll('.nav-tab');
+    var blocks = document.querySelectorAll('.session-block');
+    var tabs = document.querySelectorAll('.nav-tab');
     blocks.forEach((b,i) => b.classList.toggle('active', i===idx));
     tabs.forEach((t,i) => t.classList.toggle('active', i===idx));
     
-    const activeBlock = blocks[idx];
+    var activeBlock = blocks[idx];
     if (activeBlock) {
       activeBlock.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
@@ -1735,8 +1741,8 @@
     });
   }
   function toggleSidebar() {
-    const sb = document.getElementById('sidebar');
-    const ov = document.getElementById('overlay');
+    var sb = document.getElementById('sidebar');
+    var ov = document.getElementById('overlay');
     sb.classList.toggle('open');
     ov.classList.toggle('active');
   }
@@ -1745,7 +1751,7 @@
       toggleSidebar();
     }
   }
-  const dummySrc = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+  var dummySrc = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
   function loadIframes(container) {
     container.querySelectorAll('iframe[data-src]').forEach(iframe => {
       if (!iframe.src || iframe.src === dummySrc || iframe.getAttribute('src') === dummySrc) {
@@ -1761,8 +1767,8 @@
 
   function toggle(card) {
     if (!card.classList.contains('topic-card')) return;
-    const wasOpen = card.classList.contains('open');
-    const stack = card.closest('.topics-stack');
+    var wasOpen = card.classList.contains('open');
+    var stack = card.closest('.topics-stack');
     if (stack) {
       stack.querySelectorAll('.topic-card.open').forEach(c => { 
         if(c!==card) {
@@ -1771,13 +1777,13 @@
         }
       });
     }
-    const isOpening = !wasOpen;
+    var isOpening = !wasOpen;
     card.classList.toggle('open', isOpening);
     if (isOpening) {
       loadIframes(card);
     }
   }
-  const initialCard = document.querySelector('.session-block.active .topic-card');
+  var initialCard = document.querySelector('.session-block.active .topic-card');
   if (initialCard) {
     initialCard.classList.add('open');
     loadIframes(initialCard);
