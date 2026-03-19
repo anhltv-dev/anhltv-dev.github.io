@@ -135,7 +135,7 @@
   /* ── HERO (Landing Page Style) ────────────── */
   .hero {
     position: relative;
-    padding: 120px 40px;
+    padding: 60px 40px;
     text-align: left;
     color: var(--white);
     background-color: #0c1222;
@@ -143,7 +143,7 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    min-height: 480px;
+    min-height: 320px;
     display: flex;
     align-items: center;
   }
@@ -1699,7 +1699,8 @@
   function show(idx) {
     document.querySelectorAll('.session-block').forEach((b,i) => b.classList.toggle('active', i===idx));
     document.querySelectorAll('.nav-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const mainPos = document.querySelector('.main').offsetTop;
+    window.scrollTo({ top: mainPos - 20, behavior: 'smooth' });
   }
   function toggleSidebar() {
     document.getElementById('sidebar').classList.toggle('open');
