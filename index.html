@@ -598,18 +598,16 @@
     background: var(--accent);
   }
   .embed-frame {
-    width: 100%; aspect-ratio: 16/9;
-    position: relative;
+    width: 100%; position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0; background: #000;
     border-radius: 10px; overflow: hidden;
     border: 1px solid var(--border);
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   }
-  @supports not (aspect-ratio: 16/9) {
-    .embed-frame { padding-top: 56.25%; height: 0; }
-    .embed-frame iframe { position: absolute; top: 0; left: 0; }
-  }
   .embed-frame iframe {
-    width: 100% !important; height: 100% !important; display: block; border: none;
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; display: block; border: none;
   }
 
   @media (max-width: 860px) {
@@ -719,7 +717,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BUkOYDUPqkAW1c7cTxrV4dF7Yrp16a3u/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BUkOYDUPqkAW1c7cTxrV4dF7Yrp16a3u/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -764,13 +762,13 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BHP0UL7cLgMxCdbQrdPh8Hg44TMmka2D/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BHP0UL7cLgMxCdbQrdPh8Hg44TMmka2D/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Thiết lập CSDL</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/11KidNk-03zE-L8HVBBi5mfA68wNw3AsF/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/11KidNk-03zE-L8HVBBi5mfA68wNw3AsF/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -817,13 +815,13 @@
           <div class="embed-panel">
             <div class="embed-label">Cấu trúc đối tượng</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BSlKICBkoYQRC2I5XhdjOXx2jvrDFM_6/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BSlKICBkoYQRC2I5XhdjOXx2jvrDFM_6/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Thuộc tính chi tiết</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1u3neMMmKbZt-10oHY9YTmu1-fjhBvuM8/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1u3neMMmKbZt-10oHY9YTmu1-fjhBvuM8/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -865,7 +863,7 @@
           <div class="embed-panel">
             <div class="embed-label">Cơ sở dữ liệu</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BUeeFgHwOyXDexo2apgKaeBPcrg0jWuz/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BUeeFgHwOyXDexo2apgKaeBPcrg0jWuz/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -912,7 +910,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BFnTEoKpiqfPUDYF3vwvyzk2yjGaoF6G/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BFnTEoKpiqfPUDYF3vwvyzk2yjGaoF6G/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -959,7 +957,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1By3wgh86vE_56sKgar_vByw_FO5d0toL/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1By3wgh86vE_56sKgar_vByw_FO5d0toL/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -999,7 +997,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BTF3mxzwAaanCZoLnHWm3alpV5b0P9Qc/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BTF3mxzwAaanCZoLnHWm3alpV5b0P9Qc/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1031,7 +1029,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BTAKXA-olJjoh53UbPKNMF_Bv8NMPweu/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BTAKXA-olJjoh53UbPKNMF_Bv8NMPweu/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1105,7 +1103,7 @@
           <div class="embed-panel">
             <div class="embed-label">Video hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://www.youtube.com/embed/jIepj01oIks"></iframe>
+              <iframe data-src="https://www.youtube.com/embed/jIepj01oIks" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1122,13 +1120,13 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BCh4kWdMcSLqaiL5NU1LvYL7bpz9SPpI/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BCh4kWdMcSLqaiL5NU1LvYL7bpz9SPpI/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Video hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://www.youtube.com/embed/khOfmEG_M_4"></iframe>
+              <iframe data-src="https://www.youtube.com/embed/khOfmEG_M_4" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1173,7 +1171,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BM54uz1lFuBdOJJrW8I9RjuDR91Ov5GI/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BM54uz1lFuBdOJJrW8I9RjuDR91Ov5GI/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1206,13 +1204,13 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BMd3LtCx-cMCipw_SPk8AAZA2dWXvODp/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BMd3LtCx-cMCipw_SPk8AAZA2dWXvODp/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Thiết lập phụ kiện</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BTzEBdyJTWQH-D4LCZnS06a1Ce1ZEN-w/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BTzEBdyJTWQH-D4LCZnS06a1Ce1ZEN-w/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1249,13 +1247,13 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BHpxdHpUT6EtKdTvbVTAvAHUatDs_hbT/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BHpxdHpUT6EtKdTvbVTAvAHUatDs_hbT/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Thao tác & Thêm nẹp</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BQO4a-xkL8YWKMW5aqLkn6rMw_IEnaB_/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BQO4a-xkL8YWKMW5aqLkn6rMw_IEnaB_/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1284,7 +1282,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BLgQLy_sMo-Kpgmlpxr5AHkpLwNRVzDE/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BLgQLy_sMo-Kpgmlpxr5AHkpLwNRVzDE/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1311,7 +1309,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BR9cRNuwLU1O-q-X3987OEbpRWRYaexo/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BR9cRNuwLU1O-q-X3987OEbpRWRYaexo/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1382,13 +1380,13 @@
           <div class="embed-panel">
             <div class="embed-label">Import CAD 2D</div>
             <div class="embed-frame">
-              <iframe src="https://www.youtube.com/embed/1I0XgNh4bPxi9qPNpCJahWsb1Oq4ofaHP"></iframe>
+              <iframe data-src="https://www.youtube.com/embed/1I0XgNh4bPxi9qPNpCJahWsb1Oq4ofaHP" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Xuất sang 3Ds Max</div>
             <div class="embed-frame">
-              <iframe src="https://www.youtube.com/embed/ivRtdI79Wik"></iframe>
+              <iframe data-src="https://www.youtube.com/embed/ivRtdI79Wik" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1419,7 +1417,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/18qGNyMCDouhltAlW-sjs_sgzlQjnmRIN/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/18qGNyMCDouhltAlW-sjs_sgzlQjnmRIN/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1450,13 +1448,13 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1BUgxbsN-5sH2HUc49Xud4QL7FaFTiqFe/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1BUgxbsN-5sH2HUc49Xud4QL7FaFTiqFe/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Playlist Fragment</div>
             <div class="embed-frame">
-              <iframe src="https://www.youtube.com/embed/videoseries?list=PLsy5sO5K7wRzOAVdDpDxGcXpHTJKR2YiI"></iframe>
+              <iframe data-src="https://www.youtube.com/embed/videoseries?list=PLsy5sO5K7wRzOAVdDpDxGcXpHTJKR2YiI" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1526,7 +1524,7 @@
           <div class="embed-panel">
             <div class="embed-label">Video hướng dẫn</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1uDjBF3EbLR9m6dARdcFtXn8V0oyBj6Zo/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1uDjBF3EbLR9m6dARdcFtXn8V0oyBj6Zo/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1556,13 +1554,13 @@
           <div class="embed-panel">
             <div class="embed-label">Bazis CNC</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1OUJPUEloyWbCQHqL-DSyzUQ_D_N-IJ2t/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1OUJPUEloyWbCQHqL-DSyzUQ_D_N-IJ2t/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Xuất file máy 6M</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1wTIeEY4w3nV897mPWMGH124vmQwsHM-m/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1wTIeEY4w3nV897mPWMGH124vmQwsHM-m/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1602,13 +1600,13 @@
           <div class="embed-panel">
             <div class="embed-label">Woodsoft Nesting</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1uXK0rG-E5cQ5iw9y0yjHOzZoOCULFxzG/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1uXK0rG-E5cQ5iw9y0yjHOzZoOCULFxzG/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
           <div class="embed-panel">
             <div class="embed-label">Postprocessor</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1Sr2a7LpL_ozzjkPD-v42kXJCPNIfk1AE/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1Sr2a7LpL_ozzjkPD-v42kXJCPNIfk1AE/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1634,7 +1632,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu thực hành</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/1OUmMmYgwBhDjy3BG3z1VZkn6OCP-EOvB/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/1OUmMmYgwBhDjy3BG3z1VZkn6OCP-EOvB/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1693,7 +1691,7 @@
           <div class="embed-panel">
             <div class="embed-label">Tài liệu tốt nghiệp</div>
             <div class="embed-frame">
-              <iframe src="https://drive.google.com/file/d/11vF9QPYakIWJmK49Bs1F0gWXs-dpc3MT/preview"></iframe>
+              <iframe data-src="https://drive.google.com/file/d/11vF9QPYakIWJmK49Bs1F0gWXs-dpc3MT/preview" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" allowfullscreen></iframe>
             </div>
           </div>
         </div>
@@ -1731,6 +1729,10 @@
     if (activeBlock) {
       activeBlock.scrollIntoView({ behavior: 'auto', block: 'start' });
     }
+    // Aggressively clear memory from OTHER blocks
+    blocks.forEach((b,i) => {
+      if (i !== idx) typeof unloadIframes === 'function' && unloadIframes(b);
+    });
   }
   function toggleSidebar() {
     const sb = document.getElementById('sidebar');
@@ -1743,11 +1745,17 @@
       toggleSidebar();
     }
   }
+  const dummySrc = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
   function loadIframes(container) {
     container.querySelectorAll('iframe[data-src]').forEach(iframe => {
-      if (iframe.src === 'about:blank' || !iframe.src) {
+      if (!iframe.src || iframe.src === dummySrc || iframe.getAttribute('src') === dummySrc) {
         iframe.src = iframe.getAttribute('data-src');
       }
+    });
+  }
+  function unloadIframes(container) {
+    container.querySelectorAll('iframe[data-src]').forEach(iframe => {
+      iframe.src = dummySrc; // clear memory
     });
   }
 
@@ -1756,7 +1764,12 @@
     const wasOpen = card.classList.contains('open');
     const stack = card.closest('.topics-stack');
     if (stack) {
-      stack.querySelectorAll('.topic-card.open').forEach(c => { if(c!==card) c.classList.remove('open'); });
+      stack.querySelectorAll('.topic-card.open').forEach(c => { 
+        if(c!==card) {
+          c.classList.remove('open');
+          unloadIframes(c); // FREE MEMORY
+        }
+      });
     }
     const isOpening = !wasOpen;
     card.classList.toggle('open', isOpening);
